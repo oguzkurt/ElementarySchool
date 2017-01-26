@@ -1,0 +1,136 @@
+%% You can put user macros here
+%% However, you cannot make new environments
+
+\usepackage[letterpaper, total={6in, 8in}]{geometry}
+\graphicspath{{./}{firstExample/}{secondExample/}}
+
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+
+\tikzstyle geometryDiagrams=[ultra thick,color=blue!50!black]
+
+%\usepackage{enumerate}
+\usepackage{euler}
+\usepackage{manfnt}
+\usepackage{MnSymbol}%
+
+\usepackage{geometry}
+ \geometry{
+ letterpaper,
+ left=18mm,
+ right=18mm,
+ top=20mm,
+ bottom=14mm
+ }
+ 
+ 
+\usetikzlibrary{shapes,snakes}
+\tikzset{
+  dot hidden/.style={},
+  line hidden/.style={},
+  dot colour/.style={dot hidden/.append style={color=#1}},
+  dot colour/.default=black,
+  line colour/.style={line hidden/.append style={color=#1}},
+  line colour/.default=black
+}
+
+%%%%%%%%%%%%%%% DICE! %%%%%%%%%%%%%%%%%
+\def\dotsize{0.1}
+
+\usepackage{xparse}
+\tikzset{
+  dot hidden/.style={},
+  line hidden/.style={},
+  dot colour/.style={dot hidden/.append style={color=#1}},
+  dot colour/.default=black,
+  line colour/.style={line hidden/.append style={color=#1}},
+  line colour/.default=black
+}
+
+\usepackage{xparse}
+\NewDocumentCommand{\drawdie}{O{}m}{
+\begin{tikzpicture}[x=2em,y=2em,radius=0.1,#1]
+  \draw[rounded corners=0.5,line hidden] (0,0) rectangle (1,1);
+  \ifodd#2
+    \fill[dot hidden] (0.5,0.5) circle;
+  \fi
+  \ifnum#2>1
+    \fill[dot hidden] (0.2,0.2) circle;
+    \fill[dot hidden] (0.8,0.8) circle;
+   \ifnum#2>3
+     \fill[dot hidden] (0.2,0.8) circle;
+     \fill[dot hidden] (0.8,0.2) circle;
+    \ifnum#2>5
+      \fill[dot hidden] (0.8,0.5) circle;
+      \fill[dot hidden] (0.2,0.5) circle;
+     \ifnum#2>7
+       \fill[dot hidden] (0.5,0.8) circle;
+       \fill[dot hidden] (0.5,0.2) circle;
+      \fi
+    \fi
+  \fi
+\fi
+\end{tikzpicture}
+}   
+
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%
+
+\newcommand{\Hsquare}{
+\boxed{\begin{matrix} ~~~~~~~ \Huge\, \end{matrix}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%% MENTAL ADD BEGIN%%%
+\tikzset{
+mycircle/.pic={
+\draw[dashed] (0,0) circle (1.6cm); 
+}
+}
+
+\tikzset{
+myellipse/.pic={
+\draw[dashed] (0,0) ellipse (3.2cm and 1.6cm); 
+}
+}
+
+\tikzset{
+mybox/.pic={
+\draw[line width=0.35mm] (-1.6,-.8) rectangle (1.6,.8);  
+}  
+}
+
+\newcommand{\mentaladd}[2]{
+\begin{tikzpicture}
+  \matrix[column sep=3mm, row sep=3mm,ampersand replacement=\&]{
+      \node[]{\Large$\mathbf{#1}$}; \& \node[]{\Large $\mathbf{+}$}; \& \node[]{\Large $\mathbf{#2}$}; \&\node[]{\Large $\mathbf{=}$}; \& \pic{mybox} ; \\
+      \pic{mycircle}; \& \node[]{\Large +};\& \pic{mycircle}; \&\node[]{\Large=}; \& \pic{myellipse}; \\
+    };
+\end{tikzpicture}
+}
+%%%%%%%%%%%%%%%%%%MENTAL ADD END %%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% KINDERGARTEN WRITING LINE 
+
+\usepackage{scalerel}
+\usepackage[usestackEOL]{stackengine}
+\newlength\letterheight
+\setlength\letterheight{.5in}
+\def\midpitch{.6}
+\parskip 0.3in
+\def\stacktype{L}\def\stackalignment{l}
+%From morsburg at http://tex.stackexchange.com/questions/12537/
+%how-can-i-make-a-horizontal-dashed-line/12553#12553
+\def\dashfill{\cleaders\hbox to .6em{-}\hfill}
+\newcommand\dashline[1]{\abovebaseline[-2pt]{\hbox to #1{\dashfill\hfil}}}
+\def\myhline{\rule{\textwidth}{.3pt}}
+\newcommand\blankrow{%
+  \setstackgap{L}{\the\letterheight}%
+  \stackon[\midpitch\letterheight]{%
+    \stackon{\myhline}{\myhline}}{\dashline{\textwidth}}%
+}
+\newcommand\fillrow[1]{%
+  \stackinset{l}{}{b}{}%
+  {\scalerel*{\rule{0pt}{.85\ht\strutbox}\smash{#1}}{\blankrow}}{\blankrow}}
+%%%%%%%%%%%%%%%%%%%%%%%% END KINDERGARTEN
