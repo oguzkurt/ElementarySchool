@@ -13,118 +13,118 @@ set_random_seed(1)
 
 def additiontable(m,x):
     # start of the table
-    s  = [r"$$\begin{array}{|r|r|r|r|r|}"]
-    s.append(r"\hline")
+    s  = [r" $$\begin{array}{|r|r|r|r|r|} "]
+    s.append(r" \hline ")
     for i in range(4):
-        s.append(r" &+{0}".format(m*10**i))
-    s.append(r"\\ \hline")
+        s.append(r"  &+{0}".format(m*10**i))
+    s.append(r" \\ \hline ")
     for k in x:
-        s.append(r"{0}".format(k))
+        s.append(r" {0}".format(k))
         for i in range(4):
-            s.append(r"& \answer{")
-            s.append(r"{0}".format(k+m*10**(i)))
-            s.append(r"}")
-        s.append(r"\\ \hline")   
-    s.append(r"\end{array}$$")
+            s.append(r" & \answer{ ")
+            s.append(r" {0}".format(k+m*10**(i)))
+            s.append(r" } ")
+        s.append(r" \\ \hline ")   
+    s.append(r" \end{array}$$ ")
     return ''.join(s)
 
 
 def in_out(m,x,side):
     if side=='r':
-        s  = [r"$$\begin{array}{|r|r|}"]
-        s.append(r"\hline")
-        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        s  = [r" $$\begin{array}{|r|r|}"]
+        s.append(r" \hline ")
+        s.append(r" \text{IN} & \text{OUT} \\ \hline ")
         for a in x:
-            s.append(r"{0}".format(a))
-            s.append(r"& \answer{")
-            s.append(r"{0}".format(a+m))
-            s.append(r"} \\ \hline ")
-        s.append(r"\text{RULE:} &") 
+            s.append(r" {0}".format(a))
+            s.append(r" & \answer{ ")
+            s.append(r" {0}".format(a+m))
+            s.append(r" } \\ \hline  ")
+        s.append(r" \text{RULE:} & ") 
         if m<0:
-            s.append(r"{0}".format(m))
+            s.append(r" {0}".format(m))
         else:
-            s.append(r"+"+r"{0}".format(m))
-        s.append(r"\\ \hline \end{array}$$")
+            s.append(r" +"+r" {0}".format(m))
+        s.append(r" \\ \hline \end{array}$$ ")
     if side=='rb':
-        s  = [r"$$\begin{array}{|r|r|}"]
-        s.append(r"\hline")
-        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        s  = [r" $$\begin{array}{|r|r|}"]
+        s.append(r" \hline ")
+        s.append(r" \text{IN} & \text{OUT} \\ \hline ")
         for myindex in range(len(x)):
             a=x[myindex]
             if myindex==0:
-                s.append(r"{0}".format(a))
-                s.append(r"&")
-                s.append(r"{0}".format(a+m))
-                s.append(r" \\ \hline ")
+                s.append(r" {0}".format(a))
+                s.append(r" & ")
+                s.append(r" {0}".format(a+m))
+                s.append(r"  \\ \hline  ")
             else:
-                s.append(r"{0}".format(a))
-                s.append(r"& \answer{")
-                s.append(r"{0}".format(a+m))
-                s.append(r"} \\ \hline ")
-        s.append(r"\text{RULE:} &")
-        s.append(r"+\answer{")
-        s.append(r"{0}".format(m))
-        s.append(r"} \\ \hline \end{array}$$")
+                s.append(r" {0}".format(a))
+                s.append(r" & \answer{ ")
+                s.append(r" {0}".format(a+m))
+                s.append(r" } \\ \hline  ")
+        s.append(r" \text{RULE:} & ")
+        s.append(r" +\answer{ ")
+        s.append(r" {0}".format(m))
+        s.append(r" } \\ \hline \end{array}$$ ")
     if side=='l':    
-        s  = [r"$$\begin{array}{|r|r|}"]
-        s.append(r"\hline")
-        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        s  = [r" $$\begin{array}{|r|r|}"]
+        s.append(r" \hline ")
+        s.append(r" \text{IN} & \text{OUT} \\ \hline ")
         for a in x:
-            s.append(r"\answer{")
-            s.append(r"{0}".format(a))
-            s.append(r"} &")
-            s.append(r"{0}".format(a+m))
-            s.append(r"\\ \hline ")
-        s.append(r"\text{RULE:} &") 
+            s.append(r" \answer{ ")
+            s.append(r" {0}".format(a))
+            s.append(r" } & ")
+            s.append(r" {0}".format(a+m))
+            s.append(r" \\ \hline  ")
+        s.append(r" \text{RULE:} & ") 
         if m<0:
-            s.append(r"{0}".format(m))
+            s.append(r" {0}".format(m))
         else:
-            s.append(r"+"+r"{0}".format(m))
-        s.append(r"\\ \hline \end{array}$$")
+            s.append(r" +"+r" {0}".format(m))
+        s.append(r" \\ \hline \end{array}$$ ")
     if side=="lb":
-        s  = [r"$$\begin{array}{|r|r|}"]
-        s.append(r"\hline")
-        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        s  = [r" $$\begin{array}{|r|r|}"]
+        s.append(r" \hline ")
+        s.append(r" \text{IN} & \text{OUT} \\ \hline ")
         for myindex in range(len(x)):
             a=x[myindex]
             if myindex==0:
-                s.append(r"{0}".format(a))
-                s.append(r"&")
-                s.append(r"{0}".format(a+m))
-                s.append(r" \\ \hline ")
+                s.append(r" {0}".format(a))
+                s.append(r" & ")
+                s.append(r" {0}".format(a+m))
+                s.append(r"  \\ \hline  ")
             else:
-                s.append(r"\answer{")
-                s.append(r"{0}".format(a))
-                s.append(r"} &")
-                s.append(r"{0}".format(a+m))
-                s.append(r"\\ \hline ")
-        s.append(r"\text{RULE:} &")
-        s.append(r"+\answer{")
-        s.append(r"{0}".format(m))
-        s.append(r"} \\ \hline \end{array}$$")
+                s.append(r" \answer{ ")
+                s.append(r" {0}".format(a))
+                s.append(r" } & ")
+                s.append(r" {0}".format(a+m))
+                s.append(r" \\ \hline  ")
+        s.append(r" \text{RULE:} & ")
+        s.append(r" +\answer{ ")
+        s.append(r" {0}".format(m))
+        s.append(r" } \\ \hline \end{array}$$ ")
     if side=="m":
-        s  = [r"$$\begin{array}{|r|r|}"]
-        s.append(r"\hline")
-        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        s  = [r" $$\begin{array}{|r|r|}"]
+        s.append(r" \hline ")
+        s.append(r" \text{IN} & \text{OUT} \\ \hline ")
         for a in x:
             coin=randint(1,2)
             if coin==1:
-                s.append(r"\answer{")
-                s.append(r"{0}".format(a))
-                s.append(r"} &")
-                s.append(r"{0}".format(a+m))
-                s.append(r"\\ \hline ")
+                s.append(r" \answer{ ")
+                s.append(r" {0}".format(a))
+                s.append(r" } & ")
+                s.append(r" {0}".format(a+m))
+                s.append(r" \\ \hline  ")
             if coin==2:
-                s.append(r"{0}".format(a))
-                s.append(r"& \answer{")
-                s.append(r"{0}".format(a+m))
-                s.append(r"} \\ \hline ")
-        s.append(r"\text{RULE:} &") 
+                s.append(r" {0}".format(a))
+                s.append(r" & \answer{ ")
+                s.append(r" {0}".format(a+m))
+                s.append(r" } \\ \hline  ")
+        s.append(r" \text{RULE:} & ") 
         if m<0:
-            s.append(r"{0}".format(m))
+            s.append(r" {0}".format(m))
         else:
-            s.append(r"+"+r"{0}".format(m))
-        s.append(r"\\ \hline \end{array}$$")
+            s.append(r" +"+r" {0}".format(m))
+        s.append(r" \\ \hline \end{array}$$ ")
         
     return ''.join(s)
 \end{sagesilent}
@@ -138,7 +138,7 @@ k=randint(4,7)
 x=[randint(5,10000) for i in range(k)]
 \end{sagesilent}
 Please, complete the following addition table:
-\sagestr{in_out(n,x,"r")}
+\sagestr{in_out(n,x,"r" )}
 \end{problem}
 
 \begin{problem}
@@ -150,7 +150,7 @@ k=randint(4,7)
 x=[randint(5,10000) for i in range(k)]
 \end{sagesilent}
 Please, complete the following addition table:
-\sagestr{in_out(n,x,"r")}
+\sagestr{in_out(n,x,"r" )}
 \end{problem}
 
 \begin{problem}
@@ -162,7 +162,7 @@ k=randint(4,7)
 x=[randint(5,10000) for i in range(k)]
 \end{sagesilent}
 Please, complete the following addition table:
-\sagestr{in_out(n,x,"rb")}
+\sagestr{in_out(n,x,"rb ")}
 \end{problem}
 
 \begin{problem}
@@ -174,20 +174,7 @@ k=randint(4,7)
 x=[randint(5,10000) for i in range(k)]
 \end{sagesilent}
 Please, complete the following addition table:
-\sagestr{in_out(n,x,"rb")}
-\end{problem}
-
-
-\begin{problem}
-\begin{sagesilent}
-m=randint(3,9)
-i=randint(0,3)
-n=m*10**i
-k=randint(4,7)
-x=[randint(5,10000) for i in range(k)]
-\end{sagesilent}
-Please, complete the following addition table:
-\sagestr{in_out(n,x,"l")}
+\sagestr{in_out(n,x,"rb ")}
 \end{problem}
 
 
@@ -200,7 +187,20 @@ k=randint(4,7)
 x=[randint(5,10000) for i in range(k)]
 \end{sagesilent}
 Please, complete the following addition table:
-\sagestr{in_out(n,x,"l")}
+\sagestr{in_out(n,x,"l ")}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"l ")}
 \end{problem}
 \begin{problem}
 \begin{sagesilent}
@@ -211,7 +211,7 @@ k=randint(4,7)
 x=[randint(5,10000) for i in range(k)]
 \end{sagesilent}
 Please, complete the following addition table:
-\sagestr{in_out(n,x,"lb")}
+\sagestr{in_out(n,x,"lb ")}
 \end{problem}
 
 \begin{problem}
@@ -223,7 +223,7 @@ k=randint(4,7)
 x=[randint(5,10000) for i in range(k)]
 \end{sagesilent}
 Please, complete the following addition table:
-\sagestr{in_out(n,x,"lb")}
+\sagestr{in_out(n,x,"lb ")}
 \end{problem}
 
 \begin{problem}
@@ -235,7 +235,7 @@ k=randint(4,7)
 x=[randint(5,10000) for i in range(k)]
 \end{sagesilent}
 Please, complete the following addition table:
-\sagestr{in_out(n,x,"m")}
+\sagestr{in_out(n,x,"m ")}
 \end{problem}
 
 \begin{problem}
@@ -247,7 +247,7 @@ k=randint(4,7)
 x=[randint(5,10000) for i in range(k)]
 \end{sagesilent}
 Please, complete the following addition table:
-\sagestr{in_out(n,x,"m")}
+\sagestr{in_out(n,x,"m ")}
 \end{problem}
 
 
