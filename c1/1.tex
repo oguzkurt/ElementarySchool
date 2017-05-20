@@ -7,11 +7,340 @@
 \empty
 \end{abstract}
 %maketitle
+%%%% ADDITION TABLES %%%%%%%%% USE: \sagestr{additiontable(m,x)}
+\begin{sagesilent}
+set_random_seed(1)
+
+def additiontable(m,x):
+    # start of the table
+    s  = [r"$$\begin{array}{|r|r|r|r|r|}"]
+    s.append(r"\hline")
+    for i in range(4):
+        s.append(r" &+{0}".format(m*10**i))
+    s.append(r"\\ \hline")
+    for k in x:
+        s.append(r"{0}".format(k))
+        for i in range(4):
+            s.append(r"& \answer{")
+            s.append(r"{0}".format(k+m*10**(i)))
+            s.append(r"}")
+        s.append(r"\\ \hline")   
+    s.append(r"\end{array}$$")
+    return ''.join(s)
+
+def in_out(m,x,side):
+    if side=='r':
+        s  = [r"$$\begin{array}{|r|r|}"]
+        s.append(r"\hline")
+        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        for a in x:
+            s.append(r"{0}".format(a))
+            s.append(r"& \answer{")
+            s.append(r"{0}".format(a+m))
+            s.append(r"} \\ \hline ")
+        s.append(r"\text{RULE:} &") 
+        if m<0:
+            s.append(r"{0}".format(m))
+        else:
+            s.append(r"+"+r"{0}".format(m))
+        s.append(r"\\ \hline \end{array}$$")
+    return ''.join(s)
+    if side=='rb':
+        s  = [r"$$\begin{array}{|r|r|}"]
+        s.append(r"\hline")
+        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        for a in x:
+            if index(a)==0:
+                s.append(r"{0}".format(a))
+                s.append(r"&")
+                s.append(r"{0}".format(a+m))
+                s.append(r" \\ \hline ")
+            else:
+                s.append(r"{0}".format(a))
+                s.append(r"& \answer{")
+                s.append(r"{0}".format(a+m))
+                s.append(r"} \\ \hline ")
+        s.append(r"\text{RULE:} &") 
+        s.append(r"+\answer{")
+        s.append(r"{0}".format(m))
+        s.append(r"}")
+    return ''.join(s)
+
+
+def in_out(m,x,side):
+    if side=='r':
+        s  = [r"$$\begin{array}{|r|r|}"]
+        s.append(r"\hline")
+        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        for a in x:
+            s.append(r"{0}".format(a))
+            s.append(r"& \answer{")
+            s.append(r"{0}".format(a+m))
+            s.append(r"} \\ \hline ")
+        s.append(r"\text{RULE:} &") 
+        if m<0:
+            s.append(r"{0}".format(m))
+        else:
+            s.append(r"+"+r"{0}".format(m))
+        s.append(r"\\ \hline \end{array}$$")
+    if side=='rb':
+        s  = [r"$$\begin{array}{|r|r|}"]
+        s.append(r"\hline")
+        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        for myindex in range(len(x)):
+            a=x[myindex]
+            if myindex==0:
+                s.append(r"{0}".format(a))
+                s.append(r"&")
+                s.append(r"{0}".format(a+m))
+                s.append(r" \\ \hline ")
+            else:
+                s.append(r"{0}".format(a))
+                s.append(r"& \answer{")
+                s.append(r"{0}".format(a+m))
+                s.append(r"} \\ \hline ")
+        s.append(r"\text{RULE:} &")
+        s.append(r"+\answer{")
+        s.append(r"{0}".format(m))
+        s.append(r"} \\ \hline \end{array}$$")
+    if side=='l':    
+        s  = [r"$$\begin{array}{|r|r|}"]
+        s.append(r"\hline")
+        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        for a in x:
+            s.append(r"\answer{")
+            s.append(r"{0}".format(a))
+            s.append(r"} &")
+            s.append(r"{0}".format(a+m))
+            s.append(r"\\ \hline ")
+        s.append(r"\text{RULE:} &") 
+        if m<0:
+            s.append(r"{0}".format(m))
+        else:
+            s.append(r"+"+r"{0}".format(m))
+        s.append(r"\\ \hline \end{array}$$")
+    if side=="lb":
+        s  = [r"$$\begin{array}{|r|r|}"]
+        s.append(r"\hline")
+        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        for myindex in range(len(x)):
+            a=x[myindex]
+            if myindex==0:
+                s.append(r"{0}".format(a))
+                s.append(r"&")
+                s.append(r"{0}".format(a+m))
+                s.append(r" \\ \hline ")
+            else:
+                s.append(r"\answer{")
+                s.append(r"{0}".format(a))
+                s.append(r"} &")
+                s.append(r"{0}".format(a+m))
+                s.append(r"\\ \hline ")
+        s.append(r"\text{RULE:} &")
+        s.append(r"+\answer{")
+        s.append(r"{0}".format(m))
+        s.append(r"} \\ \hline \end{array}$$")
+    if side=="m":
+        s  = [r"$$\begin{array}{|r|r|}"]
+        s.append(r"\hline")
+        s.append(r"\text{IN} & \text{OUT} \\ \hline")
+        for a in x:
+            coin=randint(1,2)
+            if coin==1:
+                s.append(r"\answer{")
+                s.append(r"{0}".format(a))
+                s.append(r"} &")
+                s.append(r"{0}".format(a+m))
+                s.append(r"\\ \hline ")
+            if coin==2:
+                s.append(r"{0}".format(a))
+                s.append(r"& \answer{")
+                s.append(r"{0}".format(a+m))
+                s.append(r"} \\ \hline ")
+        s.append(r"\text{RULE:} &") 
+        if m<0:
+            s.append(r"{0}".format(m))
+        else:
+            s.append(r"+"+r"{0}".format(m))
+        s.append(r"\\ \hline \end{array}$$")
+        
+    return ''.join(s)
+\end{sagesilent}
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"r")}
+\end{problem}
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"r")}
+\end{problem}
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"rb")}
+\end{problem}
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"rb")}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"l")}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"l")}
+\end{problem}
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"lb")}
+\end{problem}
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"lb")}
+\end{problem}
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"m")}
+\end{problem}
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+i=randint(0,3)
+n=m*10**i
+k=randint(4,7)
+x=[randint(5,10000) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{in_out(n,x,"m")}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+k=randint(3,7)
+x=[randint(5,9999) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{additiontable(m,x)}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+k=randint(3,7)
+x=[randint(5,9999) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{additiontable(m,x)}
+\end{problem}
+
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+k=randint(3,7)
+x=[randint(5,9999) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{additiontable(m,x)}
+\end{problem}
+
+\begin{problem}
+\begin{sagesilent}
+m=randint(3,9)
+k=randint(3,7)
+x=[randint(5,9999) for i in range(k)]
+\end{sagesilent}
+Please, complete the following addition table:
+\sagestr{additiontable(m,x)}
+\end{problem}
+
+
+
+
+
+\end{document}
 \begin{problem}
 Please, fill in the blanks on the following addition table.
 \begin{center}
 $$
-\arraycolsep=5pt\def\arraystretch{1.8}
+%\arraycolsep=5pt\def\arraystretch{1.8}
 \begin{array}[s]{|r||r|r|r|r|}
 \hline
 &~~~~~~~ \mathbf{+5} &~~~~~ \mathbf{+50} &~~~~ \mathbf{+500} &~~~ \mathbf{+5000} 
@@ -32,7 +361,11 @@ $$
 \end{center}
 \end{problem}
 
+\begin{problem}
+Please, fill in the blanks on the following addition table.
 
+\end{problem}
+\end{document}
 \begin{problem}
 Please, complete the addition table. Note that the students are expected to think in reverse order.
 
